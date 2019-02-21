@@ -1,0 +1,25 @@
+{
+  "name": "clank",
+  "version": "1.0.0",
+  "description": "Discord Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopher-gordon98/Clank.git"
+  },
+  "author": "Chris Gordon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christopher-gordon98/Clank/issues"
+  },
+  "homepage": "https://github.com/christopher-gordon98/Clank#readme",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6"
+  },
+  "devDependencies": {
+    "winston": "^3.2.1"
+  }
+}
