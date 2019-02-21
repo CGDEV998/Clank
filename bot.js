@@ -1,43 +1,24 @@
-var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./auth.json');
+const Discord = require('discord.js');
+const authToken = 'NTQ4MDcyNTU1MDU2MjAxNzU4.D1AGZg.V9556Et_wCXoLzZKMSf4qPZzbnc';
 
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console(), {
-  colorize: true
+const bot = new Discord.Client();
+
+bot.on('ready', () => {
+  console.log(`Logged in as ${bot.user.tag}!`);
 });
 
-logger.level = 'debug';
-
-let bot = new Discord.Client({
-  token: auth.token,
-  autorun: true
-});
-
-bot.on('ready', function (evt) {
-  logger.info('Connected');
-  logger.info('Logged in as: ');
-  logger.info(bot.username + ' - (' + bot.id + ')');
-});
-
-bot.on('message', function (user, userID, channelID, message, evt) {
-  if (message.substring(0, 1) === '!') { // Search for command prefix '!'
-    let args = message.substring(1).split(' '); // Filter command (take first word)
-    let command = args[0];
-
-    args = args.splice(1);
-    switch (command) {
-      case 'ping':
-        bot.sendMessage({
-          to: channelID,
-          message: 'Pong!'
-        });
-        break;
-      case 'gametime':
-        bot.sendMessage({
-          to: channelID,
-          message: '@Monkeys - It\'s time to play!'
-        });
+bot.on('message', function (message) {
+  switch (message.content.toLocaleUpperCase()) {
+    case 'GAMETIME': {
+      console.log(message.channel.guild.roles.get('548106236726607873'));
     }
   }
 });
+
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'general');
+  if (!channel) return;
+  channel.send(`Welcome to the server, ${member}`);
+});
+
+bot.login(authToken);
