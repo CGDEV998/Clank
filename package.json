@@ -4,6 +4,7 @@
   "description": "Discord Bot",
   "main": "bot.js",
   "scripts": {
+    "start": "node bot.js",
     "test": "test"
   },
   "repository": {
