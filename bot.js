@@ -33,12 +33,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           message: 'Pong!'
         });
         break;
-      case 'ding':
+      case 'gametime':
         bot.sendMessage({
           to: channelID,
-          message: 'Dong!'
+          message: '@Monkeys - It\'s time to play!'
         });
-        break;
     }
   }
 });
