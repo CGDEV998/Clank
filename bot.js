@@ -33,6 +33,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           message: 'Pong!'
         });
         break;
+      case 'ding':
+        bot.sendMessage({
+          to: channelID,
+          message: 'Dong!'
+        });
+        break;
     }
   }
 });
